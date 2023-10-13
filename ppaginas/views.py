@@ -11,7 +11,6 @@ def Administrador(request):
 def index(request):
     return render(request, "ppaginas/calendario.html")
 
-
 def Escuelas(request):
     return render(request, "ppaginas/escuelas.html")
 

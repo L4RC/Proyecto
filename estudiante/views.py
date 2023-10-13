@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def Student(request):
+def Estudiante1(request):
     return render(request, "Estudiante/estudiante.html")
 
 def Iniciar(request):
