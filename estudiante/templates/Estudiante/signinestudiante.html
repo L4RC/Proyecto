@@ -1,18 +1,9 @@
 {% extends "ppaginas/basesesion.html" %}
-
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-
-<form method="post" action="" style="color: white;">
-    {%csrf_token %}
-
-    {{form|crispy}}
-
-    <button type="submit" class="btn btn-success">Ingresa</button>
     
-</form>
-
         <!-- Sign In Start -->
         <div class="container-fluid">
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
@@ -25,21 +16,21 @@
                             <h3><a class="btn btn-square btn-dark m-2" href="{% url 'Inicio'%}"><i class="fa fa-home"></i></a></h3><!--Para enlazar a inicio-->
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Correo</label>
                         </div>
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Contraseña</label>
+
+                        <form method="post" action="" style="color: white;">
+
+                            {%csrf_token %}
+                        
+                            <div style="width: 75%; margin: auto;">
+                            {{form|crispy}}
+                            
+                            <button type="submit" class="btn btn-success">Login</button>
                         </div>
-                        <div class="d-flex align-items-center justify-content-between mb-4">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Recordar</label>
-                            </div>
-                            <a href="">Olvidaste tu Contraseña</a>
-                        </div>
-                        <button type="submit" class="btn btn-Secondary py-3 w-100 mb-4"><a href="Estudiante">Iniciar sesión</a></button>
+                        
+                        </form>
+
+
                         <p class="text-center mb-0">¿No tienes una cuenta? <a href="Registro">Registrate</a></p><!--Para cargar signup-->
                     </div>
                 </div>
@@ -47,5 +38,7 @@
         </div>
         <!-- Sign In End -->
     </div>
+
+
 
 {% endblock %}

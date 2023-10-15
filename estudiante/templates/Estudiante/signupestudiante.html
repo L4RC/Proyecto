@@ -5,14 +5,6 @@
 
 {% block content %}
 
-<form method="post" action="" style="color: white;">
-
-    {% csrf_token%}
-
-    {{form|crispy}}
-
-    <button type="submit" class="btn btn-success">Registrate</button>
-
 <!-- Sign Up Start -->
         <div class="container-fluid">
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
@@ -24,51 +16,18 @@
                             </a>
                             <h3><a href="{% url 'Inicio'%}">Inicio</a></h3>
                         </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingText" placeholder="jhondoe">
-                            <label for="floatingText">Nombre</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Apellido</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">DPI</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Fecha de nacimiento</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Teléfono</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Nombre de usuario</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Correo</label>
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Contraseña</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Confirmación contraseña</label>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between mb-4">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                            <a href="">Forgot Password</a>
-                        </div>
-                        <button type="submit" class="btn btn-Secondary py-3 w-100 mb-4">Sign Up</button>
-                        <p class="text-center mb-0">Already have an Account? <a href="Iniciar">Sign In</a></p>
+
+                        <form method="post" action="" style="color: white;">
+
+                            {% csrf_token%}
+                        
+                            {{form|crispy}}
+                        
+                            <button type="submit" class="btn btn-success">Registrate</button>
+
+                        </form>
+
+                        <p class="text-center mb-0">Already have an Account? <a href="{% url 'logear' %}">Sign In</a></p>
                     </div>
                 </div>
             </div>
@@ -76,6 +35,6 @@
         <!-- Sign Up End -->
     </div>
 
-</form>
+
 
 {% endblock %}
