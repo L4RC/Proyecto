@@ -5,7 +5,7 @@ from . import views
 #from django.conf.urls.static import static 
 
 urlpatterns = [
-    path('', views.Profesor, name="Profesor"),    
-    path('', views.Iniciar1, name="Iniciar1"),
-    path('', views.Registro2, name="Registro2"),
+    path('Profesor', views.Profesor, name="Profesor"),    
+    path('Iniciar1', views.Iniciar1, name="Iniciar1"),
+    path('Registro2', views.Registro2, name="Registro2"),
 ]

@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin',#se agrego
+     'jazzmin',#se agrego
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'estudiante', #se agrego
     'docente', #se agrego
     'asignacion',
+    'asignar',
+    'crispy_forms',
+    'crispy_bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +138,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #MEDIA_URL = '/media/' #carpeta de media
 #MEDIA_ROOT= Path.join(BASE_DIR,'media')
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend" #lineas para el correo 
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
+
+CRISPY_ALLOWED_TEMPLATE_PACK = "botstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4" 
