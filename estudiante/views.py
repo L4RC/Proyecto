@@ -41,9 +41,18 @@ def Registro(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)  # Inicia sesión al usuario después del registro
-            return redirect('estudiante')  # Redirige a la página de inicio o a donde desees
+            password = form.cleaned_data['password']
+            password2 = form.cleaned_data['password2']
+            
+            if password == password2:
+                user = form.save()
+                login(request, user)  # Inicia sesión al usuario después del registro
+                return redirect('estudiante')  # Redirige a la página de inicio o a donde desees
+            else:
+                messages.error(request, 'Las contraseñas no coinciden.')
+        else:
+            messages.error(request, 'Hubo un problema con el formulario de registro.')
+
     else:
         form = RegistrationForm()
     
