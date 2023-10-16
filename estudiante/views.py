@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.views.generic import View
-from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.forms import  AuthenticationForm
+#from django.views.generic import View
+from django.contrib.auth import login, logout
+from django.contrib.auth.forms import  AuthenticationForm, authenticate
 from django.contrib import messages
 from .forms import RegistrationForm  # Importa el formulario desde forms.py
 
@@ -47,7 +47,8 @@ def Registro(request):
             if password == password2:
                 user = form.save()
                 login(request, user)  # Inicia sesión al usuario después del registro
-                return redirect('estudiante')  # Redirige a la página de inicio o a donde desees
+                return render(request, 'Estudiante/estudiante.html')
+
             else:
                 messages.error(request, 'Las contraseñas no coinciden.')
         else:
@@ -64,15 +65,16 @@ def cerrar_sesion(request):#sesar sesion.
     logout(request)
     return redirect('Inicio')
 
+
 def logear(request): #para iniciar sesion estudiante
     if request.method =="POST":
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
-            nombre_usuario = form.cleaned_data.get("username")
-            contra = form.cleaned_data.get("password")
-            usuario = authenticate(username = nombre_usuario, password = contra)
-            if usuario is not None:
-                login(request, usuario)
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password")
+            username = authenticate(username = username, password = password)
+            if username is not None:
+                login(request, username)
             #    return redirect('estudiante')
                 return render(request, "Estudiante/estudiante.html")
             
@@ -85,4 +87,16 @@ def logear(request): #para iniciar sesion estudiante
     form = AuthenticationForm()
     return render(request, "Estudiante/signinestudiante.html",{"form":form})
 
+"""
+def logear(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            login(request, form.get_user())
+            return render(request, 'Estudiante/estudiante.html')
 
+#            return redirect('Registro')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'Estudiante/signinestudiante.html', {'form': form})
+"""

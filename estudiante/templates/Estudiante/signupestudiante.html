@@ -31,14 +31,14 @@
 
                             <form method="post">
                                 {% csrf_token %}
-                                {{ form.Nombre.label_tag }} 
-                                {{ form.Nombre }}
+                                {{ form.first_name.label_tag }} 
+                                {{ form.first_name }}
                                 <span class="tooltip" title="Ingresa tu nombre">
                                     <i class="fas fa-question-circle"></i>
                                 </span><br>
                             
-                                {{ form.Apellido.label_tag }} 
-                                {{ form.Apellido }}
+                                {{ form.last_name.label_tag }} 
+                                {{ form.last_name }}
                                 <span class="tooltip" title="Ingresa tu contraseña.">
                                     <i class="fas fa-question-circle"></i>
                                 </span><br>
@@ -61,26 +61,26 @@
                                     <i class="fas fa-question-circle"></i>
                                 </span><br>
                             
-                                {{ form.Usuario.label_tag }} 
-                                {{ form.Usuario }}
+                                {{ form.username.label_tag }} 
+                                {{ form.username }}
                                 <span class="tooltip" title="Ingresa tu número de teléfono.">
                                     <i class="fas fa-question-circle"></i>
                                 </span><br>
                             
-                                {{ form.Correo.label_tag }}
-                                {{ form.Correo }}
+                                {{ form.email.label_tag }}
+                                {{ form.email }}
                                 <span class="tooltip" title="Selecciona tu fecha de nacimiento.">
                                     <i class="fas fa-question-circle"></i>
                                 </span><br>
 
-                                {{ form.Contraseña.label_tag }} 
-                                {{ form.Contraseña }}
+                                {{ form.password.label_tag }} 
+                                {{ form.password }}
                                 <span class="tooltip" title="Selecciona tu fecha de nacimiento.">
                                     <i class="fas fa-question-circle"></i>
                                 </span><br>
 
-                                {{ form.Confirmacion.label_tag }} 
-                                {{ form.Confirmacion }}
+                                {{ form.password2.label_tag }} 
+                                {{ form.password2 }}
                                 <span class="tooltip" title="Selecciona tu fecha de nacimiento.">
                                     <i class="fas fa-question-circle"></i>
                                 </span><br>

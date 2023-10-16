@@ -9,7 +9,6 @@ urlpatterns = [
 #    path('Registro', views.Registro, name="Registro"),
     path('Registro', Registro, name='Registro'),
 
-#    path('Registro', VRegistro.as_view(), name="Registro"),
     path('',cerrar_sesion, name="cerrar_sesion"),
     path('logear',logear, name="logear"),    
 ]

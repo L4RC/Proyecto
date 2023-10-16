@@ -56,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
 ]
 
 ROOT_URLCONF = 'pagina.urls'
@@ -85,7 +86,7 @@ WSGI_APPLICATION = 'pagina.wsgi.application'
 DATABASES = {  #Conexión a base de datos
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'proyecto',
+        'NAME': 'pagina',
         'USER' : 'postgres',
         'PASSWORD': '123456',
         'HOST': 'localhost',
