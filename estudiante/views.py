@@ -1,20 +1,31 @@
 from django.shortcuts import render, redirect
-#from django.views.generic import View
-from django.contrib.auth import login, logout
-from django.contrib.auth.forms import  AuthenticationForm, authenticate
-from django.contrib import messages
-from .forms import RegistrationForm  # Importa el formulario desde forms.py
 
+from django.contrib.auth import logout
+from django.contrib.auth.models import User
+from django.views.generic import CreateView
+from django.urls import reverse_lazy
+from estudiante.forms import RegistroForm
+from django.contrib.auth.views import PasswordChangeView
 # Create your views here.
+
+class CustomPasswordChangeView(PasswordChangeView):
+    template_name = 'reseteo/cambiar.html'
+    success_url = reverse_lazy('cambio')
+
+def cambio_contrasena_exitoso(request):
+    return render(request, 'resetep/cambio.html')
+
+
 
 def Estudiante(request):
     return render(request, "Estudiante/estudiante.html")
 
-#def Iniciar(request):
-#    return render(request, "Estudiante/signinestudiante.html")
+class RegistroUsuario(CreateView):
+    model = User
+    template_name ="Estudiante/signupestudiante.html"
+    form_class = RegistroForm
+    success_url = reverse_lazy('Estudiante')
 
-#def Registro(request):
-#    return render(request, "Estudiante/signupestudiante.html")
 """
 class VRegistro(View): #para el registro 
     def get(self, request):
@@ -27,76 +38,30 @@ class VRegistro(View): #para el registro
         if form.is_valid():
             usuario = form.save()
             login(request, usuario)
-#            return redirect('estudiante')
-            return render(request, "Estudiante/estudiante.html")
-
+            return redirect('Estudiante')
 
         else: 
             for msg in form.error_messages:
                 messages.error(request, form.error_messages[msg])
         return render(request, "Estudiante/signupestudiante.html", {"form":form})
 
-"""
-def Registro(request):
+def logear(request):#Para iniciar sesion, validando usuario y contraseña
     if request.method == 'POST':
-        form = RegistrationForm(request.POST)
+        form = AuthenticationForm(request, request.POST)
         if form.is_valid():
+            username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            password2 = form.cleaned_data['password2']
-            
-            if password == password2:
-                user = form.save()
-                login(request, user)  # Inicia sesión al usuario después del registro
-                return render(request, 'Estudiante/estudiante.html')
-
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('Estudiante')  # Reemplaza 'página_principal' con la URL a la que deseas redirigir al usuario después del inicio de sesión
             else:
-                messages.error(request, 'Las contraseñas no coinciden.')
-        else:
-            messages.error(request, 'Hubo un problema con el formulario de registro.')
-
-    else:
-        form = RegistrationForm()
-    
-    return render(request, 'Estudiante/signupestudiante.html', {'form': form})
-
-
-
-def cerrar_sesion(request):#sesar sesion.
-    logout(request)
-    return redirect('Inicio')
-
-
-def logear(request): #para iniciar sesion estudiante
-    if request.method =="POST":
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get("username")
-            password = form.cleaned_data.get("password")
-            username = authenticate(username = username, password = password)
-            if username is not None:
-                login(request, username)
-            #    return redirect('estudiante')
-                return render(request, "Estudiante/estudiante.html")
-            
-            else:
-                messages.error(request, "Usuario no válido")
-
-        else:
-            messages.error(request, "Información incorrecta")
-
-    form = AuthenticationForm()
-    return render(request, "Estudiante/signinestudiante.html",{"form":form})
-
-"""
-def logear(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            login(request, form.get_user())
-            return render(request, 'Estudiante/estudiante.html')
-
-#            return redirect('Registro')
+                error_message = "Nombre de usuario o contraseña incorrectos."
+                return render(request, 'Estudiante/signinestudiante.html', {'form': form, 'error_message': error_message})
     else:
         form = AuthenticationForm()
     return render(request, 'Estudiante/signinestudiante.html', {'form': form})
-"""
+""" 
+def cerrar_sesion(request):#sesar sesion.
+    logout(request)
+    return redirect('Inicio')

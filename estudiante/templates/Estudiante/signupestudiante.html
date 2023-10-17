@@ -1,11 +1,8 @@
 {% extends "ppaginas/basesesion.html" %}
 {% load static %}
-
 {% load crispy_forms_tags %}
-
 {% block content %}
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 <!-- Sign Up Start -->
         <div class="container-fluid">
@@ -18,76 +15,75 @@
                             </a>
                             <h3><a href="{% url 'Inicio'%}">Inicio</a></h3>
                         </div>
+                        
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class = "row"></div>
+                            <div class="col-md-8 col-md-offser-2">
+                                <div class="form-group">
+                                    <label>Nombre</label>
+                                    <input class="form-control" type="text" name="first_name">
+                                </div>
+                            </div>
+
+                            <div class = "row"></div>
+                            <div class="col-md-8 col-md-offser-2">
+                                <div class="form-group">
+                                    <label>Apellido</label>
+                                    <input class="form-control" type="text" name="last_name">
+                                </div>
+                            </div>
+
+                            <div class = "row"></div>
+                            <div class="col-md-8 col-md-offser-2">
+                                <div class="form-group">
+                                    <label>Nombre de usuario</label>
+                                    <input class="form-control" type="text" name="username">
+                                </div>
+                            </div>
+
+                            <div class = "row"></div>
+                            <div class="col-md-8 col-md-offser-2">
+                                <div class="form-group">
+                                    <label>Correo</label>
+                                    <input class="form-control" type="text" name="email">
+                                </div>
+                            </div>
+
+                            <div class = "row"></div>
+                            <div class="col-md-8 col-md-offser-2">
+                                <div class="form-group">
+                                    <label>Contraseña</label>
+                                    <input class="form-control" type="password" name="password">
+                                </div>
+                            </div>
+
+                            <div class = "row"></div>
+                            <div class="col-md-8 col-md-offser-2">
+                                <div class="form-group">
+                                    <label>Confirmar contraseña</label>
+                                    <input class="form-control" type="password" name="password">
+                                </div>
+                            </div>
+
+                            <div class = "row"></div>
+                            <div class="col-md-8 col-md-offser-2">
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type =" submit">Guardar</button>
+                                </div>
+                            </div>
+                        
+                        </form>
+
 <!--
                         <form method="post" action="" style="color: white;">
-
-                            {% csrf_token%}
-                        
+                            {% csrf_token%}                        
                             {{form|crispy}}
-                        
                             <button type="submit" class="btn btn-success">Registrate</button>
 
-                            </form> -->
-
-                            <form method="post">
-                                {% csrf_token %}
-                                {{ form.first_name.label_tag }} 
-                                {{ form.first_name }}
-                                <span class="tooltip" title="Ingresa tu nombre">
-                                    <i class="fas fa-question-circle"></i>
-                                </span><br>
-                            
-                                {{ form.last_name.label_tag }} 
-                                {{ form.last_name }}
-                                <span class="tooltip" title="Ingresa tu contraseña.">
-                                    <i class="fas fa-question-circle"></i>
-                                </span><br>
-                            
-                                {{ form.DPI.label_tag }} 
-                                {{ form.DPI }}
-                                <span class="tooltip" title="Confirma tu contraseña.">
-                                    <i class="fas fa-question-circle"></i>
-                                </span><br>
-                            
-                                {{ form.Fecha.label_tag }} 
-                                {{ form.Fecha }}
-                                <span class="tooltip" title="Ingresa tu nombre.">
-                                    <i class="fas fa-question-circle"></i>
-                                </span><br>
-                            
-                                {{ form.Telefono.label_tag }} 
-                                {{ form.Telefono }}
-                                <span class="tooltip" title="Ingresa tu dirección de correo electrónico.">
-                                    <i class="fas fa-question-circle"></i>
-                                </span><br>
-                            
-                                {{ form.username.label_tag }} 
-                                {{ form.username }}
-                                <span class="tooltip" title="Ingresa tu número de teléfono.">
-                                    <i class="fas fa-question-circle"></i>
-                                </span><br>
-                            
-                                {{ form.email.label_tag }}
-                                {{ form.email }}
-                                <span class="tooltip" title="Selecciona tu fecha de nacimiento.">
-                                    <i class="fas fa-question-circle"></i>
-                                </span><br>
-
-                                {{ form.password.label_tag }} 
-                                {{ form.password }}
-                                <span class="tooltip" title="Selecciona tu fecha de nacimiento.">
-                                    <i class="fas fa-question-circle"></i>
-                                </span><br>
-
-                                {{ form.password2.label_tag }} 
-                                {{ form.password2 }}
-                                <span class="tooltip" title="Selecciona tu fecha de nacimiento.">
-                                    <i class="fas fa-question-circle"></i>
-                                </span><br>
-
-                                <input type="submit" class="btn btn-primary rounded-pill m-2" value="Registrarse">
-                            </form>
-                            
+                        </form>
+-->
+                        <p class="text-center mb-0">Already have an Account? <a href="Iniciar">Sign In</a></p>
                     </div>
                 </div>
             </div>

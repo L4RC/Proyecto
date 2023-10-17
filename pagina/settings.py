@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -56,7 +57,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
 ]
 
 ROOT_URLCONF = 'pagina.urls'
@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'pagina.wsgi.application'
 DATABASES = {  #Conexión a base de datos
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pagina',
+        'NAME': 'proyecto',
         'USER' : 'postgres',
         'PASSWORD': '123456',
         'HOST': 'localhost',
@@ -144,8 +144,11 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend" #lineas para el co
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = ""
-EMAIL_HOST_PASSWORD = ""
+EMAIL_HOST_USER = ""#agregar el correo
+EMAIL_HOST_PASSWORD = ""   #agregar la contraseña
 
 CRISPY_ALLOWED_TEMPLATE_PACK = "botstrap4"
 CRISPY_TEMPLATE_PACK = "bootstrap4" 
+
+LOGIN_REDIRECT_URL = reverse_lazy('Estudiante')
+#LOGIN_URL = 'accounts:login'  # Reemplaza 'accounts:login' con la ruta correcta a tu vista de inicio de sesión
