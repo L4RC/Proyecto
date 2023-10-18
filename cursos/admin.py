@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Curso, Materia, Profesor, Seccion, Dia, Salon, Auxiliar
+from .models import Curso, Materia, Profesor, Seccion, Dia, Salon, Auxiliar, Precio
 
 # Register your models here.
 
@@ -13,3 +13,4 @@ admin.site.register(Seccion)
 admin.site.register(Dia)
 admin.site.register(Salon)
 admin.site.register(Auxiliar)
+admin.site.register(Precio)

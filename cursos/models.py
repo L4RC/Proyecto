@@ -17,7 +17,7 @@ class Profesor(models.Model):#Para agregar el nombre del profesor
     def __str__ (self):
         return self.nombre    
 
-class Seccion(models.Model):#Para agregar el nombre del profesor
+class Seccion(models.Model):#Para agregar el nombre de la seccion
     nombre = models.CharField(max_length=50)
     class Meta:
         verbose_name= "Seccion"
@@ -25,7 +25,7 @@ class Seccion(models.Model):#Para agregar el nombre del profesor
     def __str__ (self):
         return self.nombre    
 
-class Dia(models.Model):#Para agregar el nombre del profesor
+class Dia(models.Model):#Para agregar el nombre de los dias
     nombre = models.CharField(max_length=50)
     class Meta:
         verbose_name= "Dia"
@@ -33,7 +33,7 @@ class Dia(models.Model):#Para agregar el nombre del profesor
     def __str__ (self):
         return self.nombre  
 
-class Salon(models.Model):#Para agregar el nombre del profesor
+class Salon(models.Model):#Para agregar el nombre del salon
     nombre = models.CharField(max_length=50)
     class Meta:
         verbose_name= "Salon"
@@ -41,15 +41,24 @@ class Salon(models.Model):#Para agregar el nombre del profesor
     def __str__ (self):
         return self.nombre
     
-class Auxiliar(models.Model):#Para agregar el nombre del profesor
+class Auxiliar(models.Model):#Para agregar el nombre del auxiliar
     nombre = models.CharField(max_length=50)
     class Meta:
         verbose_name= "Auxiliar"
         verbose_name_plural = "Auxiliar"
     def __str__ (self):
         return self.nombre
+    
+class Precio(models.Model):
+    nombre = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
+    class Meta:
+        verbose_name = "Precio"
+        verbose_name_plural = "Precios"
+    def __str__(self):
+        return str(self.nombre)  # Convierte el objeto decimal en una cadena
 
-class Curso(models.Model):
+
+class Curso(models.Model):#Para agregar los cursos, titulo, nombre, docente, aux, seccion
     Curso = models.ForeignKey(Materia, on_delete=models.CASCADE)
     Seccion = models.ForeignKey(Seccion, on_delete=models.CASCADE)
     Edificio = models.CharField(max_length= 20)
@@ -59,3 +68,4 @@ class Curso(models.Model):
     Dias = models.ForeignKey(Dia, on_delete=models.CASCADE)
     Docente = models.ForeignKey(Profesor, on_delete=models.CASCADE)
     Auxiliar = models.ForeignKey(Auxiliar, on_delete=models.CASCADE)
+    Precio = models.ForeignKey(Precio, on_delete=models.CASCADE)

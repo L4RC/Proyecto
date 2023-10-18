@@ -1,0 +1,52 @@
+{% extends "ppaginas/baseperfil.html" %}
+
+{% load static %}
+
+{% block content %}
+
+ <!-- Table Start -->
+ <div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Segundo Semestre</h6>
+                <table class="table">
+                    <thead>
+                        <tr> <!--Estructura de la tabla-->
+                            <th scope="col">Curso</th><!--1-->
+                            <th scope="col">Sección</th><!--2-->
+                            <th scope="col">Edificio</th><!--3-->
+                            <th scope="col">Salón</th><!--4-->
+                            <th scope="col">Inicio</th><!--5-->
+                            <th scope="col">Final</th><!--6-->
+                            <th scope="col">Días</th><!--7-->
+                            <th scope="col">Docente</th><!--8-->
+                            <th scope="col">Auxiliar</th><!--9-->
+                            <th scope="col">Asignar</th>
+                        </tr>
+                    </thead>
+                    {%for Curso in cursos %}
+                    <tbody>
+                        <tr> <!--Datos para la tabla-->
+                            <th scope="row">{{Curso.Curso}}</th><!--1-->
+                            <td>{{Curso.Seccion}}</td><!--2-->
+                            <td>{{Curso.Edificio}}</td><!--3-->
+                            <td>{{Curso.Salon}}</td><!--4-->
+                            <td>{{Curso.Inicio}}</td><!--5-->
+                            <td>{{Curso.Fin}}</td><!--6-->
+                            <td>{{Curso.Dias}}</td><!--6-->
+<!---->                                       <!--7-->
+                            <th scope="row">{{Curso.Docente}}<!--8--></th>
+                            <th scope="row">{{Curso.Auxiliar}}<!--9--></th>
+
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Table End -->
+                
+{% endblock %}

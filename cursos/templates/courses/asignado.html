@@ -1,0 +1,46 @@
+{% extends "courses/basetable.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Table Start -->
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4"></h6>
+                <table class="table">
+                    <thead>
+                        <tr> <!--Estructura de la tabla-->
+                            <th scope="col">Curso</th><!--1-->
+                            <th scope="col">Días</th><!--7-->
+                            <th scope="col">Asignar</th>
+                        </tr>
+                    </thead>
+                    {%for Curso in cursos %}
+                    <tbody>
+                        <tr> <!--Datos para la tabla-->
+                            <th scope="row">{{Curso.Curso}}</th><!--1-->
+                            <td><a href="{% url 'carro:agregar' Curso.id %}" class="btn btn-success"> Agregar </a> </td>
+                            
+                        </tr>
+                    </tbody>
+
+                    {% endfor %}
+                    
+                </table>
+            </div>
+        </div>
+        <div style="float: right; ">
+            <p style="color: white;">Total:{{importe_total_carro}} </p>
+
+            {% include "carro/widget.html" %}
+
+        </div>
+        
+    </div>
+</div>
+<!-- Table End -->
+
+
+{% endblock %}

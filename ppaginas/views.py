@@ -1,5 +1,5 @@
 #from django.template import Template, Context
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
      #carpeta.models import nombre
 
 def Inicio(request):

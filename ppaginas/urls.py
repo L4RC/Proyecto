@@ -1,8 +1,5 @@
 from django.urls import path
-
-from ppaginas import views
-#from django.conf import settings
-#from django.conf.urls.static import static 
+from ppaginas import views #importa las views de la carpeta ppgainas
 
 urlpatterns = [
     path('', views.Inicio, name="Inicio"),
