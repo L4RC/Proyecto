@@ -14,8 +14,8 @@ def agregar_curso(request, Curso_id):
 def eliminar_curso(request, Curso_id):
     carro = Carro(request)
     curso = Curso.objects.get(id=Curso_id)
-    carro.eliminar(curso=curso)
-    return redirect("Asigna")
+    carro.eliminar(Curso=curso)
+    return redirect("desasigna")
 
 #def limpiar_curso(request, curso_id):
 #    carro = Carro(request)

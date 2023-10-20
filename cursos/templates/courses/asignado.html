@@ -1,6 +1,37 @@
-{% extends "courses/basetable.html" %}
+{% extends "ppaginas/baseperfil.html" %}
+
 {% load static %}
 {% block content %}
+
+        <!-- Content Start -->
+        <div class="">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+                <div class="navbar-nav align-items-center ms-auto">
+                    <div class="nav-item dropdown">
+                        <a href="" class="" data-bs-toggle="dropdown">
+                            <span class="d-none d-lg-inline-flex">
+                            
+                            {%if user.is_authenticated %} <!--Para verificar si esta dentro-->
+                            {{User.username}} <!--Mostroar el nombre del usuario-->
+                            
+                            {% else %}
+
+                            {% endif%}
+                            </span><!--Nombre del usuario-->
+                        </a>
+
+                        <div class="btn btn-success">
+                            <a href="{% url 'Estudiante'%}" class="dropdown-item">Inicio</a>
+
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar End -->
+
+
+
 
 <!-- Table Start -->
 
@@ -21,23 +52,15 @@
                     <tbody>
                         <tr> <!--Datos para la tabla-->
                             <th scope="row">{{Curso.Curso}}</th><!--1-->
-                            <td><a href="{% url 'carro:agregar' Curso.id %}" class="btn btn-success"> Agregar </a> </td>
-                            
+                            <th scope="row">{{Curso.Dias}}</th><!--1-->
+                            <td><a href="{% url 'carro:agregar' Curso.id %}" class="btn btn-success"> Agregar </a> </td>                            
                         </tr>
                     </tbody>
-
                     {% endfor %}
                     
                 </table>
             </div>
-        </div>
-        <div style="float: right; ">
-            <p style="color: white;">Total:{{importe_total_carro}} </p>
-
-            {% include "carro/widget.html" %}
-
-        </div>
-        
+        </div>        
     </div>
 </div>
 <!-- Table End -->

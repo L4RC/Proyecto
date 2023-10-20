@@ -10,7 +10,7 @@ def Asigna(request):#tabla de cursos dentro del usuario
     return render(request,"courses/asignado.html", {"cursos":cursos})
 
 
-#def Asigna(request):#tabla de cursos dentro del usuario
-#    cursos = Curso.objects.all()
-#    return render(request,"courses/asignado.html", {"cursos":cursos})
+def desasigna(request):#tabla de cursos dentro del usuario
+    cursos = Curso.objects.all()
+    return render(request,"courses/desasignar.html", {"cursos":cursos})
 

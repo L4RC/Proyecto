@@ -152,4 +152,6 @@ CRISPY_ALLOWED_TEMPLATE_PACK = "botstrap4"
 CRISPY_TEMPLATE_PACK = "bootstrap4" 
 
 LOGIN_REDIRECT_URL = reverse_lazy('Estudiante')
+LOGOUT_REDIRECT_URL = 'Inicio'  # Reemplaza 'inicio' con la URL de tu página de inicio
+
 #LOGIN_URL = 'accounts:login'  # Reemplaza 'accounts:login' con la ruta correcta a tu vista de inicio de sesión
