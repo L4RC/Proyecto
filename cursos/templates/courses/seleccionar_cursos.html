@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Seleccionar Cursos</title>
+</head>
+<body>
+    <h1>Selecciona tus cursos:</h1>
+    <form method="post" action="{% url 'Asigna' %}">
+        {% csrf_token %}
+        <ul>
+            {% for curso in cursos_disponibles %}
+                <li>
+                    <input type="checkbox" name="cursos_seleccionados" value="{{ curso.id }}">
+                    {{ curso.Curso.nombre }} - {{ curso.Docente.nombre }}
+                </li>
+            {% endfor %}
+        </ul>
+        <input type="submit" value="Guardar Cursos Seleccionados">
+    </form>
+</body>
+</html>

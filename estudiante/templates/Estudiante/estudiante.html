@@ -23,8 +23,9 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end bg-white border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">Mi perfil</a>
-                            <a href="{% url 'cerrar_sesion'%}" class="dropdown-item">Log Out</a>
+                            <a href="{% url 'user_profile' username=user.username %}" class="dropdown-item">Ver perfil</a>                            
+
+                            <a href="{% url 'cerrar_sesion'%}" class="dropdown-item">Log Out</a> 
                         </div>
                     </div>
                 </div>
@@ -41,7 +42,8 @@
                         <div class="btn btn-lg btn-secondary m-2 rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-user fa-3x text-primary"></i>
                             <div class="ms-2">
-                                <a href="{% url 'Asigna'%}" class="">Asignar Cursos</a>
+                                <a href="{% url 'lista_cursos' %}">Inscribirse en el curso</a>
+
                             </div>
                         </div>
                     </div>
@@ -57,7 +59,7 @@
                         <div class="btn btn-lg btn-secondary m-2 rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-chart-area fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Cursos Asignados</p>
+                                <a href="" class="">Mis Cursos</a>
                                 <h6 class="mb-0"></h6>
                             </div>
                         </div>

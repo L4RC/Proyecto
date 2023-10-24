@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from django.urls import reverse_lazy
+import os 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,7 +45,6 @@ INSTALLED_APPS = [
     'estudiante', #se agrego
     'docente', #se agrego
     'asignacion',
-    'carro',
     'crispy_forms',
     'crispy_bootstrap4',
 ]
@@ -64,7 +64,8 @@ ROOT_URLCONF = 'pagina.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+#        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -87,7 +88,7 @@ WSGI_APPLICATION = 'pagina.wsgi.application'
 DATABASES = {  #Conexión a base de datos
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'proyecto',
+        'NAME': 'academia',
         'USER' : 'postgres',
         'PASSWORD': '123456',
         'HOST': 'localhost',
@@ -145,7 +146,7 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend" #lineas para el co
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = ""#agregar el correo
+EMAIL_HOST_USER = "estudianteusac54@gmail.com"#agregar el correo
 EMAIL_HOST_PASSWORD = ""   #agregar la contraseña
 
 CRISPY_ALLOWED_TEMPLATE_PACK = "botstrap4"

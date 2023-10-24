@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inscripción en un curso</title>
+</head>
+<body>
+    <h1>Inscripción en un curso</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        <!-- Puedes agregar campos del formulario, por ejemplo, para el nombre del estudiante o información adicional si es necesario -->
+        <label for="nombre_estudiante">Nombre del estudiante:</label>
+        <input type="text" name="nombre_estudiante" id="nombre_estudiante" required>
+        
+        <!-- Agrega otros campos según tus necesidades -->
+        
+        <input type="submit" value="Inscribirse en el curso">
+    </form>
+    
+    <p><a href="{% url 'lista_cursos' %}">Volver a la lista de cursos</a></p>
+</body>
+</html>

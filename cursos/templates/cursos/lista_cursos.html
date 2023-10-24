@@ -1,0 +1,11 @@
+<h1>Cursos Disponibles</h1>
+<ul>
+   {% for curso in cursos %}
+       <li>{{ curso.nombre }} - {{ curso.descripcion }}
+           <form method="post" action="{% url 'inscribirse_curso' curso.id %}">
+               {% csrf_token %}
+               <input type="submit" value="Inscribirse">
+           </form>
+       </li>
+   {% endfor %}
+</ul>

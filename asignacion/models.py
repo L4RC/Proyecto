@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here. Para la asignación de cursos
+"""
 class Materia(models.Model):#Para agregar la materia
     nombre = models.CharField(max_length=50)
     class Meta:
@@ -46,3 +47,4 @@ class Categoria(models.Model):
     def __str__ (self):
         return self.Curso
     
+"""

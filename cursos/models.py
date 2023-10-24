@@ -1,5 +1,17 @@
 from django.db import models
+from django.contrib.auth.models import User
 
+class Curso(models.Model):
+    nombre = models.CharField(max_length=100)
+    descripcion = models.TextField()
+    cupo = models.PositiveIntegerField()
+    estudiantes_inscritos = models.ManyToManyField(User, related_name='cursos_inscritos', blank=True)
+
+class Estudiante(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    # Otros campos específicos del estudiante, como el número de teléfono, pueden ir aquí
+
+"""
 # Create your models here.
 class Materia(models.Model):#Para agregar la materia
     nombre = models.CharField(max_length=50)
@@ -16,30 +28,6 @@ class Profesor(models.Model):#Para agregar el nombre del profesor
         verbose_name_plural = "Profesores"
     def __str__ (self):
         return self.nombre    
-
-class Seccion(models.Model):#Para agregar el nombre de la seccion
-    nombre = models.CharField(max_length=50)
-    class Meta:
-        verbose_name= "Seccion"
-        verbose_name_plural = "Secciones"
-    def __str__ (self):
-        return self.nombre    
-
-class Dia(models.Model):#Para agregar el nombre de los dias
-    nombre = models.CharField(max_length=50)
-    class Meta:
-        verbose_name= "Dia"
-        verbose_name_plural = "Dias"
-    def __str__ (self):
-        return self.nombre  
-
-class Salon(models.Model):#Para agregar el nombre del salon
-    nombre = models.CharField(max_length=50)
-    class Meta:
-        verbose_name= "Salon"
-        verbose_name_plural = "Salones"
-    def __str__ (self):
-        return self.nombre
     
 class Auxiliar(models.Model):#Para agregar el nombre del auxiliar
     nombre = models.CharField(max_length=50)
@@ -60,12 +48,8 @@ class Precio(models.Model):
 
 class Curso(models.Model):#Para agregar los cursos, titulo, nombre, docente, aux, seccion
     Curso = models.ForeignKey(Materia, on_delete=models.CASCADE)
-    Seccion = models.ForeignKey(Seccion, on_delete=models.CASCADE)
     Edificio = models.CharField(max_length= 20)
-    Salon = models.ForeignKey(Salon, on_delete=models.CASCADE)
-    Inicio = models.CharField(max_length= 20)
-    Fin = models.CharField(max_length= 20)
-    Dias = models.ForeignKey(Dia, on_delete=models.CASCADE)
     Docente = models.ForeignKey(Profesor, on_delete=models.CASCADE)
     Auxiliar = models.ForeignKey(Auxiliar, on_delete=models.CASCADE)
     Precio = models.ForeignKey(Precio, on_delete=models.CASCADE)
+"""

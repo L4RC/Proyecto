@@ -31,38 +31,19 @@
             <!-- Navbar End -->
 
 
+              <h2>Agregar un Nuevo Curso</h2>
+              <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+            
+                <button type="submit">Agregar Curso</button>
+              </form>
+
+            
 
 
 <!-- Table Start -->
 
-<div class="container-fluid pt-4 px-4">
-    <div class="row g-4">
-        <div class="">
-            <div class="bg-secondary rounded h-100 p-4">
-                <h6 class="mb-4"></h6>
-                <table class="table">
-                    <thead>
-                        <tr> <!--Estructura de la tabla-->
-                            <th scope="col">Curso</th><!--1-->
-                            <th scope="col">Días</th><!--7-->
-                            <th scope="col">Asignar</th>
-                        </tr>
-                    </thead>
-                    {%for Curso in cursos %}
-                    <tbody>
-                        <tr> <!--Datos para la tabla-->
-                            <th scope="row">{{Curso.Curso}}</th><!--1-->
-                            <th scope="row">{{Curso.Dias}}</th><!--1-->
-                            <td><a href="{% url 'carro:agregar' Curso.id %}" class="btn btn-success"> Agregar </a> </td>                            
-                        </tr>
-                    </tbody>
-                    {% endfor %}
-                    
-                </table>
-            </div>
-        </div>        
-    </div>
-</div>
 <!-- Table End -->
 
 
