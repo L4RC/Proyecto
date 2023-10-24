@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cursos Asignados</title>
+</head>
+<body>
+    {%if user.is_authenticated %} <!--Para verificar si esta dentro-->
+    Hola {{user.username}} <!--Mostroar el nombre del usuario-->
+    
+    {% else %}
+
+    {% endif%}
+    <h1>Estos son tus cursos asignados</h1>
+    <ul>
+        {% for curso in cursos_asignados %}
+            <li>{{ curso.nombre }} - {{ curso.descripcion }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
